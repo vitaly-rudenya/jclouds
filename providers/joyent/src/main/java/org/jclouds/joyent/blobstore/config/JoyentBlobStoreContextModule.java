@@ -21,7 +21,6 @@ import com.google.inject.Scopes;
 import org.jclouds.blobstore.AsyncBlobStore;
 import org.jclouds.blobstore.BlobStore;
 import org.jclouds.blobstore.attr.ConsistencyModel;
-import org.jclouds.blobstore.config.BlobStoreMapModule;
 import org.jclouds.joyent.blobstore.JoyentAsyncBlobStore;
 import org.jclouds.joyent.blobstore.JoyentBlobStore;
 
@@ -35,7 +34,6 @@ public class JoyentBlobStoreContextModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        install(new BlobStoreMapModule());
         bind(ConsistencyModel.class).toInstance(ConsistencyModel.STRICT);
         bind(AsyncBlobStore.class).to(JoyentAsyncBlobStore.class).in(Scopes.SINGLETON);
         bind(BlobStore.class).to(JoyentBlobStore.class).in(Scopes.SINGLETON);
